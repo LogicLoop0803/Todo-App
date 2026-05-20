@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium To-Do App</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <main class="app-container glass-panel">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="header-top">
+                <h1>Tasks</h1>
+                <div class="clock-widget">
+                    <span id="live-time">00:00</span>
+                    <span id="live-date">Day, Date</span>
+                </div>
+            </div>
+            <div class="quote-section" id="quote-container">
+                <p id="motivational-quote">"Loading inspiration..."</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-labels">
+                    <span>Progress</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <form id="task-form">
+                <div class="input-group">
+                    <input type="text" id="task-input" placeholder="What needs to be done?" autocomplete="off" required>
+                </div>
+                <div class="input-actions">
+                    <div class="action-item">
+                        <i class="fa-regular fa-calendar"></i>
+                        <input type="date" id="task-date">
+                    </div>
+                    <div class="action-item">
+                        <i class="fa-solid fa-flag"></i>
+                        <select id="task-priority">
+                            <option value="low" selected>Low</option>
+                            <option value="medium">Med</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary" id="add-btn">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Controls Section (Search & Filter) -->
+        <section class="controls-section">
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search tasks...">
+            </div>
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Done</button>
+            </div>
+        </section>
+
+        <!-- Task List Section -->
+        <section class="list-section">
+            <ul id="task-list" class="task-list">
+                <!-- Tasks will be dynamically injected here -->
+            </ul>
+            <div id="empty-state" class="empty-state hidden">
+                <img src="https://cdn-icons-png.flaticon.com/512/7486/7486744.png" alt="All caught up!" class="empty-img">
+                <p>You're all caught up!</p>
+                <span>Add some tasks to get started.</span>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="app-footer">
+            <div class="counters">
+                <span id="total-count">0 tasks</span> • 
+                <span id="completed-count">0 completed</span>
+            </div>
+            <button id="clear-completed" class="btn-secondary">Clear Completed</button>
+        </footer>
+    </main>
+
+    <!-- Initial Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Custom Audio for task completion -->
+    <audio id="success-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+
+    <!-- Confetti Canvas (we'll implement custom Vanilla JS confetti here or over DOM) -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
